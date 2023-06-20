@@ -1,21 +1,25 @@
-import axios from "axios"
-import { useRef } from "react";
+import { useEffect } from "react";
 import { useApi } from "../../hooks/useApi";
 
-export const Main = ()=>{
+export const Main = () => {
+  const api = useApi();
 
-   const api = useApi()
+  useEffect(() => {
+    (async () => {
+      const categoryResp = await api.get("public/categories/listMainCategories");
+      const jopResp = await api.get("public/blogs/list?status=active&length=6");
+      const blogResp = await api.get("public/clientProjects/latestJobs?status=pending");
+      
+      
+      console.log("categoryResp", categoryResp.data);
+      console.log( "jopResp", jopResp.data);
+      console.log("blogResp", blogResp.data);
+    })();
+  }, []);
 
-    useRef(()=>{
-        axios.get("https://api.adoptez1artisan.com/public/categories/listMainCategories")
-        .then((res)=> console.log(res))
-        .catch((err)=> console.log(err));
-
-    },[])
-
-    return(
-        <>
-        <div className="container">
+  return (
+    <>
+      <div className="container">
         <div className="row">
           <div className="col-lg-12">
             <div className="page-content">
@@ -324,6 +328,6 @@ export const Main = ()=>{
           </div>
         </div>
       </div>
-        </>
-    )
-}
+    </>
+  );
+};
