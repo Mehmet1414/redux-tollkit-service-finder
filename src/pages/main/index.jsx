@@ -1,21 +1,8 @@
-import { useEffect } from "react";
-import { useApi } from "../../hooks/useApi";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const Main = () => {
-  const api = useApi();
-
-  useEffect(() => {
-    (async () => {
-      const categoryResp = await api.get("public/categories/listMainCategories");
-      const jopResp = await api.get("public/blogs/list?status=active&length=6");
-      const blogResp = await api.get("public/clientProjects/latestJobs?status=pending");
-      
-      
-      console.log("categoryResp", categoryResp.data);
-      console.log( "jopResp", jopResp.data);
-      console.log("blogResp", blogResp.data);
-    })();
-  }, []);
+  const categoryState = useSelector((state) => state.CategorySlice);
 
   return (
     <>
@@ -44,166 +31,23 @@ export const Main = () => {
                   <div className="col-lg-12">
                     <div className="heading-section">
                       <h4>
-                        <em>Categories</em> Right Now
+                        <em>Categories</em>
                       </h4>
                     </div>
                     <div className="row">
-                      <div className="col-lg-3 col-sm-6">
-                        <div className="item">
-                          <img src="assets/images/popular-01.jpg" alt="" />
-                          <h4>
-                            Fortnite
-                            <br />
-                            <span>Sandbox</span>
-                          </h4>
-                          <ul>
-                            <li>
-                              <i className="fa fa-star"></i> 4.8
-                            </li>
-                            <li>
-                              <i className="fa fa-download"></i> 2.3M
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-3 col-sm-6">
-                        <div className="item">
-                          <img src="assets/images/popular-02.jpg" alt="" />
-                          <h4>
-                            PubG
-                            <br />
-                            <span>Battle S</span>
-                          </h4>
-                          <ul>
-                            <li>
-                              <i className="fa fa-star"></i> 4.8
-                            </li>
-                            <li>
-                              <i className="fa fa-download"></i> 2.3M
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-3 col-sm-6">
-                        <div className="item">
-                          <img src="assets/images/popular-03.jpg" alt="" />
-                          <h4>
-                            Dota2
-                            <br />
-                            <span>Steam-X</span>
-                          </h4>
-                          <ul>
-                            <li>
-                              <i className="fa fa-star"></i> 4.8
-                            </li>
-                            <li>
-                              <i className="fa fa-download"></i> 2.3M
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-3 col-sm-6">
-                        <div className="item">
-                          <img src="assets/images/popular-04.jpg" alt="" />
-                          <h4>
-                            CS-GO
-                            <br />
-                            <span>Legendary</span>
-                          </h4>
-                          <ul>
-                            <li>
-                              <i className="fa fa-star"></i> 4.8
-                            </li>
-                            <li>
-                              <i className="fa fa-download"></i> 2.3M
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="item">
-                          <div className="row">
-                            <div className="col-lg-6 col-sm-6">
-                              <div className="item inner-item">
-                                <img
-                                  src="assets/images/popular-05.jpg"
-                                  alt=""
-                                />
-                                <h4>
-                                  Mini Craft
-                                  <br />
-                                  <span>Legendary</span>
-                                </h4>
-                                <ul>
-                                  <li>
-                                    <i className="fa fa-star"></i> 4.8
-                                  </li>
-                                  <li>
-                                    <i className="fa fa-download"></i> 2.3M
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                            <div className="col-lg-6 col-sm-6">
-                              <div className="item">
-                                <img
-                                  src="assets/images/popular-06.jpg"
-                                  alt=""
-                                />
-                                <h4>
-                                  Eagles Fly
-                                  <br />
-                                  <span>Matrix Games</span>
-                                </h4>
-                                <ul>
-                                  <li>
-                                    <i className="fa fa-star"></i> 4.8
-                                  </li>
-                                  <li>
-                                    <i className="fa fa-download"></i> 2.3M
-                                  </li>
-                                </ul>
-                              </div>
+                      {categoryState.categories.map((item) => {
+                        return (
+                          <div className="col-lg-3 col-sm-6" key={item.id}>
+                            <div className="item">
+                              <Link to={"category/" + item.slug}>
+                              <img src={item.image} alt="" />
+                              <h4>{item.name}</h4>
+                              </Link>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-3 col-sm-6">
-                        <div className="item">
-                          <img src="assets/images/popular-07.jpg" alt="" />
-                          <h4>
-                            Warface
-                            <br />
-                            <span>Max 3D</span>
-                          </h4>
-                          <ul>
-                            <li>
-                              <i className="fa fa-star"></i> 4.8
-                            </li>
-                            <li>
-                              <i className="fa fa-download"></i> 2.3M
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-3 col-sm-6">
-                        <div className="item">
-                          <img src="assets/images/popular-08.jpg" alt="" />
-                          <h4>
-                            Warcraft
-                            <br />
-                            <span>Legend</span>
-                          </h4>
-                          <ul>
-                            <li>
-                              <i className="fa fa-star"></i> 4.8
-                            </li>
-                            <li>
-                              <i className="fa fa-download"></i> 2.3M
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+                        );
+                      })}
+
                       <div className="col-lg-12">
                         <div className="main-button">
                           <a href="browse.html">Discover Popular</a>
