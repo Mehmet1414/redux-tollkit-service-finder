@@ -35,12 +35,12 @@ export const Main = () => {
                       </h4>
                     </div>
                     <div className="row">
-                      {categoryState.categories.map((item) => {
+                      {categoryState?.categories.map((item,index) => {
                         return (
                           <div className="col-lg-3 col-sm-6" key={item.id}>
                             <div className="item">
                               <Link to={"category/" + item.slug}>
-                              <img src={item.image} alt="" />
+                              <img src={`https://picsum.photos/20${index}`} alt="" />
                               <h4>{item.name}</h4>
                               </Link>
                             </div>
