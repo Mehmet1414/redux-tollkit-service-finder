@@ -26,11 +26,11 @@ export const CategoryDetail = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="page-content">
+              <div className="main-banner">
               <h4>
               <em>{categoryDetail?.category.name}</em>
               </h4>
               <p>{categoryDetail?.category.description}</p>
-              <div className="main-banner">
                 <img
                   src={`https://picsum.photos/seed/picsum/400/200`}
                   alt=""
@@ -45,15 +45,15 @@ export const CategoryDetail = () => {
                       </h4>
                     </div>
                     <div className="row">
-                      {categoryDetail?.services.map((item, index) => {
+                      {categoryDetail?.services.map((item) => {
                         return (
                           <div className="col-lg-3 col-sm-6" key={item.id}>
                             <div className="item">
-                              <Link to={"service/" + item.slug}>
+                              <Link to={"/service/" + item.slug}>
                                 <img
                                   src={item.image}
                                   onError={(target) => {
-                                    target.currentTarget.src = `https://picsum.photos/2${index}0`;
+                                    target.currentTarget.src = `https://picsum.photos/${item.id}`;
                                   }}
                                   alt=""
                                 />
@@ -81,7 +81,7 @@ export const CategoryDetail = () => {
                         return (
                           <div className="col-lg-3 col-sm-6" key={item.id}>
                             <div className="item">
-                              <Link to={"blog/" + item.slug}>
+                              <Link to={"/blog/" + item.slug}>
                                 <img
                                   src={item.image}
                                   onError={(target) => {
