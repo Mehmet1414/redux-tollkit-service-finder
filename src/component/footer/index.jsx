@@ -35,7 +35,7 @@ const Footer = () => {
               <ListGroupItem className=" d-flex flex-column overflow-auto bg-dark">
             {categoryState.categories.map((item, index)=>{
               return(
-                <Link to={item.slug} key={item.id}>
+                <Link to={"category/" + item.slug} key={item.id}>
                 {index +1}-{item.name}
               </Link>
               )
