@@ -9,6 +9,7 @@ import { setCategories } from "./redux/CategorySlice";
 import { CategoryDetail } from "./pages/categoryDetailPage"; 
 import { ServisDetail } from "./pages/servisDetailPage";
 import { BlogDetail } from "./pages/blogDetailPage";
+import LoginPage from "./pages/login";
 
 function App() {
   const api = useApi();
@@ -31,6 +32,7 @@ function App() {
         <Route path="category/:slug" element={<CategoryDetail />} />
         <Route path="service/:slug" element={<ServisDetail />} />
         <Route path="blog/:slug" element={<BlogDetail />} />
+        <Route path="login" element={<LoginPage />} />
       </Routes>
 
       <Footer />
