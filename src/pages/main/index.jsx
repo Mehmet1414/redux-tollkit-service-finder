@@ -14,19 +14,19 @@ export const Main = () => {
                 <div className="row  ">
                   <div className="col-lg-7  ">
                     <div className="header-text ">
-                      <h6>Welcome To Home Technical Services</h6>
+                      <h6>Welcome to Home Technical Services</h6>
                       <h4>
                         <em>What?</em> Where? How MUch?
                       </h4>
                       <div className="main-button">
-                        <a href="browse.html">Browse Now</a>
+                        <a href="browse.html">More...</a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="most-popular">
+              <div className="most-popular" >
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="heading-section">
@@ -34,10 +34,10 @@ export const Main = () => {
                         <em>Categories</em>
                       </h4>
                     </div>
-                    <div className="row">
+                    <div className="row" >
                       {categoryState?.categories.map((item,index) => {
                         return (
-                          <div className="col-lg-3 col-sm-6" key={item.id}>
+                          <div className="col-lg-3 col-sm-6 " key={item.id}>
                             <div className="item">
                               <Link to={"category/" + item.slug}>
                               <img src={`https://picsum.photos/20${index}`} alt="" />

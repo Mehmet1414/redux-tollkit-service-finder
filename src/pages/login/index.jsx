@@ -6,9 +6,9 @@ export default function LoginPage() {
 
   return (
     <>
-      <div className="container   ">
+      <div className="container">
         <div className="row ">
-          <div className="col-lg-12 po  ">
+          <div className="col-lg-12">
             <div className="page-content  ">
               <div className="heading-section">
                 <h4>
@@ -18,12 +18,15 @@ export default function LoginPage() {
               <Form
                 onSubmit={async (e) => {
                   e.preventDefault();
+
                   const formData = new FormData(e.currentTarget);
                   const formJson = Object.fromEntries(formData.entries());
-                  console.log(" >>  form jasson", formJson);
 
-                  const authResponse = await api.post("auth/login", formJson);
-                  console.log("autoResponse", authResponse);
+                  console.log(" >>> Form Json", formJson);
+
+                  const authResponse = await api.post("auth/login",formJson);
+
+                  console.log("><>> authResponse", authResponse);
                 }}
               >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -34,7 +37,7 @@ export default function LoginPage() {
                     name="email"
                   />
                   <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
+                    * We'll never share your email with anyone else.
                   </Form.Text>
                 </Form.Group>
 
@@ -55,7 +58,6 @@ export default function LoginPage() {
                   Submit
                 </Button>
               </Form>
-              );
             </div>
           </div>
         </div>

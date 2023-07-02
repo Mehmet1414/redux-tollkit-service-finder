@@ -25,7 +25,7 @@ export const BlogDetail = () => {
             <div className="page-content">
               <h1 className=" text-center">Blog Detail</h1>
 
-              <div className="main-banner">
+              <div className="main-banner " style={{ minHeight:"100px"}}>
                 <h4>
                   <em>{blogDetail?.blog.title}</em>
                 </h4>
